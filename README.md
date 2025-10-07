@@ -2,7 +2,13 @@
  Apple II vga + Mockingboard emulation board at the same time as the vga output.
  This project based on [Mark Aikens Apple II VGA](https://github.com/markadev/AppleII-VGA/) and [A2Analog](https://github.com/V2RetroComputing/analog)
 
- ![a2vga_card](docs/photo_2024-11-20_12-01-19.jpg)
+
+ ![a2vga_card_rev0.3](docs/20251007_101847.jpg)
+ <details>
+  <summary>Old rev0.1</summary>
+  
+   ![a2vga_card](docs/photo_2024-11-20_12-01-19.jpg)
+</details>
 
  ## Hardware differences between existing A2VGA type cards
  
@@ -30,7 +36,7 @@ For proper Mockingboard emulation we also need drive/IRQ, so i used  [MacFly's](
 
 - Firmware for GAL16V8 you can download from [∀2 Retro Computing](https://github.com/V2RetroComputing/analog), so direct link for source code is [picopal](https://github.com/V2RetroComputing/picopal-v1/blob/dbde4b1a4bb3d2647ef39bca39bba3fad3cf1425/picopal.pld); direct link to JED file is: [picopal.jed](firmware/PicoPal.jed)
 - Do not use firmware that is not specifically designed for this board. It is necessary to make sure that the pipico is flashed with the firmware from this page from the [this section](https://github.com/Tronix286/a2vga_audio/issues/firmware/Release) . First flash [v2-analog-preloader.uf2](https://github.com/Tronix286/a2vga_audio/blob/main/firmware/Release/v2-analog-preloader.uf2) then burn main a2vga+audio firmware [v2-analog-lc-4ns-vga.uf2](https://github.com/Tronix286/a2vga_audio/blob/main/firmware/Release/v2-analog-lc-4ns-vga.uf2). Also you can try [applevga.uf2](https://github.com/Tronix286/a2vga_audio/blob/main/firmware/Release/applevga.uf2) - this firmware dosnt support mockingboard, but compiled for this PCB exactly.
-- For proper color decoding very important use "fast" logic IC for U8 (74xx574), U9 (74xx373). Original a2vga PIOs worked at a pixel clock frequency of ~25 MHz, then when sequentially loading values ​​into two registers in my board, a frequency twice as high is required - 50 MHz(!). This is most likely almost the maximum frequency for the 74HC IC series, so it is better to use something faster, for example, the 74AC or 74ACT series. Sometimes the Chinese re-mark the chips, so if you order them from AliExpress, it is not a fact that the marking corresponds to the real chip. They can sell HC as LS marking or vice versa. Therefore, original fast 3.3V chips are needed, HC (not sure) or AC or ACT series. In my case I used what I had on hand, namely IN74HC373 and IN74AC574 combination.
+- For proper color decoding very important use "fast" logic IC for U8 (74xx574), U9 (74xx373). Original a2vga PIOs worked at a pixel clock frequency of ~25 MHz, then when sequentially loading values ​​into two registers in my board, a frequency twice as high is required - 50 MHz(!). This is most likely almost the maximum frequency for the 74HC IC series, so it is better to use something faster, for example, the 74AC or 74ACT series. Sometimes the Chinese re-mark the chips, so if you order them from AliExpress, it is not a fact that the marking corresponds to the real chip. They can sell HC as LS marking or vice versa. Therefore, original fast 3.3V chips are needed, HC (not sure) or AC or ACT series. In my case I used what I had on hand, namely IN74HC373 and IN74AC574 combination. A combination of the ST M74HC373B1 and MC74ACT574N IC also works.
 
 ## PCB version history:
 
